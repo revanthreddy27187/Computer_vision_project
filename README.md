@@ -1,4 +1,4 @@
-Dataset paths:
+Training and inference
 1. Install the neccesary libraries like matplotlib, scikit-learn, tensorflow etc;
 2.Line #24 train path, #25 validation path we need to specify.
 2.Run python3 train.py 
