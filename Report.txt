@@ -1,0 +1,31 @@
+Data sources:
+1. Dataset is collected from the Roboflow(https://universe.roboflow.com/). I have taken 6 classes construction_workers, generator, solar_panel,stairs,tower_crane,water_tank
+Preprocessing steps:
+1.For each class I have selected the 130 images.
+2.All the images I have splitted into train(100), Val(20), test(10)
+3.I have added the few augmentations because we have very less data for reducing the overfitting issue I have added.
+Model architecture and training approach:
+1. Loaded the pre trained Resnet50 model(Base model).
+2. I have builded my custom model on top of base model for getting the optimal loss, avoiding the vanishing gradient issue and for multiclass classification used the softmaxlayer.
+3. I have defined the optimizer, loss function and accuracy for metrics.
+4. finally I have trained with 100 epochs.
+5. After training I will be taking the train and validation loss, train and validation accuracy saving in graph using matplotlib.
+6. finally I am saving the model '.h5' format.
+Performance metrics and analysis:
+1. Loaded the trained model using model.load and will get the prediction results.
+2. I have caluculated the precision,recall and F1score from the predictions.
+3. Observed that few classes F1 score is low but I have justifications for that.
+
+Challenges Faced :
+1. Intially I have started training with out using augmentation.Model is not able to converge properly.
+2. For getting the better optimal loss I have changed the pooling layer.
+3. To avoid the vanishing gradient issue I have modified the activation tanh to relu.
+4. Intially I have trained for 50 epochs I am seeing the converge still it is reducing so i have changed the epochs and I have trained the model.
+5. Intially I have tried with input high resolution 512*512 for training its taking time so I have reduced to 224*224 I have trained the model.
+Future improvements:
+1. In few classes tower crane images construction workers also visibile in the same image. Our current model is failing to classify that image as tower crane. We need to modify the dataset.
+2. Current dataset I have taken only 100 images original if we can increase the dataset still more will get the accuracy.
+3. Need to test the inference pipe line and get the FPS modify the inference script using multithreading approach.
+
+
+
